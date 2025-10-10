@@ -2,7 +2,7 @@
   <img width="612" height="255" alt="itsgeppy-projects" src="https://github.com/user-attachments/assets/e66db398-d3bf-4ade-8149-1cf4def62cbf" />
 </div>
 
-# 👋 Hi! Hello! It's me! <img align="right" width="250" height="219" alt="Froggy-Sticker" src="https://github.com/user-attachments/assets/1b04c461-a248-428f-93f0-36c59c911ad1" />
+# 👋 Hi! Hello! It's me! <img align="right" width="250" height="219" alt="Froggy-Sticker" src="https://github.com/user-attachments/assets/3a4346a2-91cf-4c02-91e0-bb52b6538327" />
 
 Finnish software developer by day, indie developer by night.  
 
