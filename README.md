@@ -11,6 +11,10 @@ Finnish software developer by day, indie developer by night.
 🎮 Enjoying gaming, game development, learning new things, and creating pixel art  
 🐛 Debugging life since 1994
 
+[[Itch.io]](https://itsgeppy.itch.io/)
+[[TryHackMe]](https://tryhackme.com/p/ItsGeppy)
+[[Boot.dev]](https://boot.dev/u/itsgeppy)
+
 <br>
 
 <details open>
