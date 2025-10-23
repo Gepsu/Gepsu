@@ -43,7 +43,7 @@ Finnish software developer by day, indie developer by night.
 </details>
 
 <details>
-  <summary>🧰 Toolbelt</summary>
+  <summary>🧰 Toolbox</summary>
   <div align="center">
     <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/godot/godot-original.svg" height="40" alt="godot logo" title="Godot" />
     <img width="2" />
@@ -54,10 +54,12 @@ Finnish software developer by day, indie developer by night.
     <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg" height="40" alt="vscode logo" title="VSCode" />
     <img width="6" />
     <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/intellij/intellij-original.svg" height="40" alt="intellij logo" title="IntelliJ IDEA" />
-    <img width="6" />
+    <img width="3" />
     <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" height="40" alt="git logo" title="Git" />
-    <img width="2" />
+    <img width="1" />
     <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linux/linux-original.svg" height="40" alt="linux logo" title="Linux" />
+    <img width="0" />
+    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" height="40" alt="mysql logo"  />
   </div>
 </details>
 
