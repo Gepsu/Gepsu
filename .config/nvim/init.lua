@@ -25,6 +25,7 @@ local opts = { noremap = true, silent = true }
 vim.keymap.set("n", "<Esc>", ":nohl<CR>", opts)
 vim.keymap.set({ "n", "v" }, "<Space>", "<Nop>", opts)
 vim.keymap.set({ "n", "v" }, "<bs>", "<Nop>", opts)
+vim.keymap.set({ "n", "v" }, "<enter>", "<Nop>", opts)
 vim.keymap.set("n", "<C-d>", "<C-d>zz", opts)
 vim.keymap.set("n", "<C-u>", "<C-u>zz", opts)
 vim.keymap.set("n", "n", "nzzzv", opts)
@@ -43,7 +44,7 @@ vim.keymap.set("n", "<Right>", ":vertical resize +2<CR>", opts)
 -- Buffers
 vim.keymap.set("n", "<Tab>", ":bnext<CR>", opts)
 vim.keymap.set("n", "<S-Tab>", ":bprevious<CR>", opts)
-vim.keymap.set("n", "<leader>x", ":bdelete!<CR>", opts)
+vim.keymap.set("n", "<leader>q", ":bdelete!<CR>", opts)
 
 -- Window management
 vim.keymap.set("n", "<leader>v", "<C-w>v", opts)
@@ -90,29 +91,48 @@ local catppuccin = {
   end,
 }
 
-local neotree = {
-  "nvim-neo-tree/neo-tree.nvim",
-  branch = "v3.x",
+-- local neotree = {
+--   "nvim-neo-tree/neo-tree.nvim",
+--   branch = "v3.x",
+--   dependencies = {
+--     "nvim-lua/plenary.nvim",
+--     "MunifTanjim/nui.nvim",
+--     "nvim-tree/nvim-web-devicons",
+--   },
+--   config = function()
+--     require("neo-tree").setup({
+--       window = {
+--         mappings = {
+--           ["P"] = {
+--             "toggle_preview",
+--             config = { use_float = true },
+--           },
+--           ["<C-b>"] = "close_window",
+--         },
+--         width = 30,
+--       },
+--     })
+--     vim.keymap.set("n", "<C-b>", ":Neotree toggle<CR>", opts)
+--   end,
+-- }
+
+local oil = {
+  "stevearc/oil.nvim",
+  lazy = false,
   dependencies = {
-    "nvim-lua/plenary.nvim",
-    "MunifTanjim/nui.nvim",
-    "nvim-tree/nvim-web-devicons",
+    "nvim-mini/mini.icons",
   },
   config = function()
-    require("neo-tree").setup({
-      window = {
-        mappings = {
-          ["P"] = {
-            "toggle_preview",
-            config = { use_float = false },
-          },
-          ["<C-b>"] = "close_window",
-        },
-        auto_expand_width = false,
-        width = 40,
+    require("oil").setup({
+      float = {
+        padding = 4,
+        max_width = 0.6,
+        border = "rounded",
       },
     })
-    vim.keymap.set("n", "<C-b>", ":Neotree toggle<CR>", opts)
+    vim.keymap.set("n", "-", function()
+      require("oil").open_float()
+    end, opts)
   end,
 }
 
@@ -389,7 +409,7 @@ vim.diagnostic.config({
 require("lazy").setup({
   spec = {
     catppuccin,
-    neotree,
+    -- neotree,
     indentline,
     bufferline,
     lualine,
@@ -401,6 +421,7 @@ require("lazy").setup({
     conform,
     lazydev,
     lsp,
+    oil,
   },
   install = { colorscheme = { "catppuccin" } },
   checker = { enabled = true },
