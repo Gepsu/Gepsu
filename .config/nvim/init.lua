@@ -311,6 +311,7 @@ local conform = {
         bash = { "shfmt" },
         lua = { "stylua" },
         go = { "crlfmt" },
+        java = { "ast_grep" },
       },
       format_on_save = {
         lsp_fallback = true,
@@ -332,6 +333,7 @@ local lsp = {
       "rust_analyzer",
       "ts_ls",
       "clangd",
+      "jdtls",
     },
   },
   dependencies = {
