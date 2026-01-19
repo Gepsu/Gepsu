@@ -11,7 +11,7 @@ vim.o.tabstop = 2
 vim.o.wrap = false
 vim.o.linebreak = true
 vim.o.autoindent = true
-vim.o.smartindent = true
+vim.o.smartindent = false
 vim.o.ignorecase = true
 vim.o.smartcase = true
 vim.o.clipboard = "unnamedplus"
@@ -181,6 +181,15 @@ local bufferline = {
 local lualine = {
   "nvim-lualine/lualine.nvim",
   dependencies = { "nvim-tree/nvim-web-devicons" },
+  config = function()
+    require("lualine").setup()
+  end,
+}
+
+local treesitter = {
+  "nvim-treesitter/nvim-treesitter",
+  lazy = false,
+  build = ":TSUpdate",
   opts = {
     ensure_installed = {
       "lua",
@@ -200,14 +209,14 @@ local lualine = {
       "javascript",
       "typescript",
       "json",
+      "sql",
+      "ocaml",
       "markdown",
       "markdown_inline",
-      "ocaml",
       "powershell",
       "python",
       "robot",
       "rust",
-      "sql",
       "yaml",
       "zig",
       "xml",
@@ -218,18 +227,6 @@ local lualine = {
     auto_install = true,
     highlight = { enable = true },
   },
-  config = function()
-    require("lualine").setup()
-  end,
-}
-
-local treesitter = {
-  "nvim-treesitter/nvim-treesitter",
-  lazy = false,
-  build = ":TSUpdate",
-  config = function()
-    require("nvim-treesitter").setup()
-  end,
 }
 
 local telescope = {
@@ -312,6 +309,7 @@ local conform = {
         lua = { "stylua" },
         go = { "crlfmt" },
         java = { "ast_grep" },
+        rust = { "ast_grep" },
       },
       format_on_save = {
         lsp_fallback = true,
@@ -334,6 +332,7 @@ local lsp = {
       "ts_ls",
       "clangd",
       "jdtls",
+      "robotframework_ls",
     },
   },
   dependencies = {
