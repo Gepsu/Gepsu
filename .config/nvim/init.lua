@@ -47,9 +47,9 @@ vim.keymap.set("n", "<S-Tab>", ":bprevious<CR>", opts)
 vim.keymap.set("n", "<leader>q", ":bdelete!<CR>", opts)
 
 -- Window management
-vim.keymap.set("n", "<leader>v", "<C-w>v", opts)
-vim.keymap.set("n", "<leader>h", "<C-w>s", opts)
-vim.keymap.set("n", "<leader>xs", ":close<CR>", opts)
+-- vim.keymap.set("n", "<leader>v", "<C-w>v", opts)
+-- vim.keymap.set("n", "<leader>h", "<C-w>s", opts)
+-- vim.keymap.set("n", "<leader>xs", ":close<CR>", opts)
 
 -- Split navigation
 vim.keymap.set("n", "<C-k>", ":wincmd k<CR>", opts)
@@ -133,6 +133,37 @@ local oil = {
     vim.keymap.set("n", "-", function()
       require("oil").open_float()
     end, opts)
+  end,
+}
+
+local gitsigns = {
+  "lewis6991/gitsigns.nvim",
+  config = function()
+    require("gitsigns").setup({
+      current_line_blame = true,
+      on_attach = function(bufnr)
+        local gitsigns = require("gitsigns")
+        local opts = { buffer = bufnr, silent = true }
+
+        opts.desc = "Preview hunk"
+        vim.keymap.set("n", "<leader>hp", gitsigns.preview_hunk, opts)
+
+        opts.desc = "Preview hunk inline"
+        vim.keymap.set("n", "<leader>hi", gitsigns.preview_hunk_inline, opts)
+
+        opts.desc = "Diff this"
+        vim.keymap.set("n", "<leader>hd", gitsigns.diffthis, opts)
+
+        opts.desc = "Stage hunk"
+        vim.keymap.set("n", "<leader>hs", gitsigns.stage_hunk, opts)
+
+        opts.desc = "Reset hunk"
+        vim.keymap.set("n", "<leader>hr", gitsigns.reset_hunk, opts)
+
+        opts.desc = "Toggle line blame"
+        vim.keymap.set("n", "<leader>tb", gitsigns.toggle_current_line_blame, opts)
+      end
+    })
   end,
 }
 
@@ -423,6 +454,7 @@ require("lazy").setup({
     lazydev,
     lsp,
     oil,
+    gitsigns,
   },
   install = { colorscheme = { "catppuccin" } },
   checker = { enabled = true },
