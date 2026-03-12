@@ -91,31 +91,6 @@ local catppuccin = {
 	end,
 }
 
--- local neotree = {
---   "nvim-neo-tree/neo-tree.nvim",
---   branch = "v3.x",
---   dependencies = {
---     "nvim-lua/plenary.nvim",
---     "MunifTanjim/nui.nvim",
---     "nvim-tree/nvim-web-devicons",
---   },
---   config = function()
---     require("neo-tree").setup({
---       window = {
---         mappings = {
---           ["P"] = {
---             "toggle_preview",
---             config = { use_float = true },
---           },
---           ["<C-b>"] = "close_window",
---         },
---         width = 30,
---       },
---     })
---     vim.keymap.set("n", "<C-b>", ":Neotree toggle<CR>", opts)
---   end,
--- }
-
 local oil = {
 	"stevearc/oil.nvim",
 	lazy = false,
@@ -150,6 +125,16 @@ local gitsigns = {
 
 				opts.desc = "Preview hunk inline"
 				vim.keymap.set("n", "<leader>hi", gitsigns.preview_hunk_inline, opts)
+
+				opts.desc = "Preview next hunk"
+				vim.keymap.set("n", "[h", function()
+					gitsigns.nav_hunk("prev", { preview = true })
+				end, opts)
+
+				opts.desc = "Preview next hunk"
+				vim.keymap.set("n", "]h", function()
+					gitsigns.nav_hunk("next", { preview = true })
+				end, opts)
 
 				opts.desc = "Diff this"
 				vim.keymap.set("n", "<leader>hd", gitsigns.diffthis, opts)
@@ -297,9 +282,9 @@ local autopairs = {
 	opts = {},
 }
 
-local surround = {
-	"tpope/vim-surround",
-}
+-- local surround = {
+-- 	"tpope/vim-surround",
+-- }
 
 local blink = {
 	"saghen/blink.cmp",
@@ -363,6 +348,7 @@ local lsp = {
 			"ts_ls",
 			"clangd",
 			"jdtls",
+			"vuels",
 		},
 	},
 	dependencies = {
@@ -426,9 +412,6 @@ vim.api.nvim_create_autocmd("LspAttach", {
 		opts.desc = "Show documentation for what is under cursor"
 		vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
 
-		--opts.desc = "Show function signature"
-		--vim.keymap.set({"n", "i"}, "<C-k>", vim.lsp.buf.signature_help, opts)
-
 		opts.desc = "Restart LSP"
 		vim.keymap.set("n", "<leader>rs", "<cmd>LspRestart<CR>", opts)
 	end,
@@ -457,7 +440,7 @@ require("lazy").setup({
 		treesitter,
 		telescope,
 		autopairs,
-		surround,
+		-- surround,
 		blink,
 		conform,
 		lazydev,
